@@ -10,7 +10,21 @@ const std::string base_name = "base.txt";
 void print_base(const std::map<std::string, std::list<std::string>>& base);
 void save_base(const std::map<std::string, std::list<std::string>>& base);
 
-
+void compare(std::string name, const std::map<std::string, std::list<std::string>>& base)
+{
+	for (std::map<std::string, std::list<std::string>>::const_iterator it = base.begin(); it != base.end(); it++)
+	{
+		if (name.compare(it->first)==0){
+			std::cout << it->first << ": \t";
+			for (std::list<std::string>::const_iterator l_it = it->second.begin(); l_it != it->second.end(); l_it++)
+			{
+				std::cout << *l_it << " , ";
+			}
+			std::cout << "\b \b";
+			std::cout << "\b \b;\n";
+		}
+	}
+}
 void main()
 {
 	setlocale(LC_ALL, "Russian");
@@ -30,6 +44,9 @@ void main()
 
 	print_base(base);
 	save_base(base);
+	std::cout << "Search by number : \n";
+	std::string str = "m123ru777";
+	compare(str, base);
 }
 
 
@@ -55,10 +72,10 @@ void save_base(const std::map<std::string, std::list<std::string>>& base)
 		for (std::list<std::string>::const_iterator l_it = it->second.begin(); l_it != it->second.end(); l_it++)
 		{
 			fout << *l_it << " , ";
+			if (l_it != --(it->second.end())) fout << " , ";
 		}
 		fout << "\b \b";
-		fout << "\b \b;\n";
+		fout << ";\n";
 	}
-	std::string command = " start noted " + base_name;
-	system(command.c_str());
+
 }
