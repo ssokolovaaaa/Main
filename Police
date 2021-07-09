@@ -9,6 +9,7 @@ const std::string base_name = "base.txt";
 
 void print_base(const std::map<std::string, std::list<std::string>>& base);
 void save_base(const std::map<std::string, std::list<std::string>>& base);
+void read_base(const std::map<std::string, std::list<std::string>>& base);
 
 void compare(std::string name, const std::map<std::string, std::list<std::string>>& base)
 {
@@ -47,6 +48,7 @@ void main()
 	std::cout << "Search by number : \n";
 	std::string str = "m123ru777";
 	compare(str, base);
+	read_base(base);
 }
 
 
@@ -62,6 +64,26 @@ void print_base(const std::map<std::string, std::list<std::string>>& base)
 		std::cout << "\b \b";
 		std::cout << "\b \b;\n";
 	}
+}
+void read_base(const std::map<std::string, std::list<std::string>>& base)
+{
+	std::ifstream in(base_name);
+	if (in.is_open()) {
+		for (std::map<std::string, std::list<std::string>>::const_iterator it = base.begin(); it != base.end(); it++)
+		{
+			std::cout << it->first << ": \t";
+			for (std::list<std::string>::const_iterator l_it = it->second.begin(); l_it != it->second.end(); l_it++)
+			{
+				std::cout << *l_it << " , ";
+				if (l_it != --(it->second.end())) std::cout << " , ";
+			}
+			std::cout << "\b \b";
+			std::cout << ";\n";
+		}
+	}
+	in.close();
+
+
 }
 void save_base(const std::map<std::string, std::list<std::string>>& base)
 {
