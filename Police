@@ -23,9 +23,9 @@ void main()
 
 	std::map<std::string, std::list<std::string>> base =
 	{
-	std::pair<std::string, std::list<std::string>>("m123ru777", { "Red color", "hight speed" }),
-	std::pair<std::string, std::list<std::string>>("m446rd011", { "Yellow color", "bad words" }),
-	std::pair<std::string, std::list<std::string>>("q199rs124", { "Red color, hight speed" }),
+	std::pair<std::string, std::list<std::string>>("m123ru777", { "Travel on red", "Over speed" }),
+	std::pair<std::string, std::list<std::string>>("m446rd011", { "Drunk driving", "Bad words" }),
+	std::pair<std::string, std::list<std::string>>("q199rs124", { "Fight with police officers" }),
 	};
 
 	print_base(base);
